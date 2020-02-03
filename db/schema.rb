@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_06_21_145055) do
+ActiveRecord::Schema.define(version: 2020_02_02_185018) do
 
   create_table "links", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -19,6 +19,36 @@ ActiveRecord::Schema.define(version: 2017_06_21_145055) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_links_on_user_id"
+  end
+
+  create_table "manufacturers", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.text "description"
+    t.integer "manufacturer_id"
+    t.integer "qty"
+    t.string "photo_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["manufacturer_id"], name: "index_products_on_manufacturer_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "score"
+    t.text "comment"
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,6 +71,8 @@ ActiveRecord::Schema.define(version: 2017_06_21_145055) do
   end
 
   add_foreign_key "links", "users"
+  add_foreign_key "reviews", "products"
+  add_foreign_key "reviews", "users"
   add_foreign_key "votes", "links"
   add_foreign_key "votes", "users"
 end
