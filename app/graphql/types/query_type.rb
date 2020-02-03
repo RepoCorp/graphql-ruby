@@ -5,7 +5,7 @@ module Types
 
     field :products, [ProductType], null: false
     field :manufacturer, [ManufacturerType], null: false
-    field :review, [ReviewType], null: false
+    field :reviews, [ReviewType], null: false
     field :users, [UserType], null: false
 
     field :product, ProductType, null: true do
