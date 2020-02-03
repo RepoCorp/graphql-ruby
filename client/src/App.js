@@ -2,37 +2,40 @@ import React from 'react';
 import { Query } from '@apollo/react-components';
 import gql from 'graphql-tag';
 
-import Character from './character';
+import Product from './product';
 
-export const HERO_QUERY = gql`
-  query GetCharacter($episode: Episode!) {
-    hero(episode: $episode) {
+export const PRODUCTS_QUERY = gql`
+  query GetProducts {
+    products {
       name
       id
-      friends {
+      description
+      manufacturer {
         name
-        id
-        appearsIn
+      }
+      price
+      reviews {
+        score
+        comment
       }
     }
   }
 `;
 
-const App = ({ episode }) => (
-  <Query query={HERO_QUERY} variables={{ episode }}>
-    {result => {
-      const { loading, error, data } = result;
+const App = () => (
+    <Query query={PRODUCTS_QUERY}>
+      {result => {
+        const { loading, error, data } = result;
 
-      if (loading) {
-        return <div>Loading</div>;
-      }
-      if (error) {
-        return <h1>ERROR</h1>;
-      }
-
-      return <Character hero={data.hero} />;
-    }}
-  </Query>
+        if (loading) {
+          return <div>Loading</div>;
+        }
+        if (error) {
+          return <h1>ERROR</h1>;
+        }
+        return <div>{data.products && data.products.map(product => <Product product={product}/>)}</div>
+      }}
+    </Query>
 );
 
 export default App;
