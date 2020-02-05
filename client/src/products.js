@@ -2,8 +2,6 @@ import React from 'react';
 
 const Product = ({ product }) => {
     return (
-        <div>
-            {product && (
                 <div>
                     <h3>{product.name}</h3>
                     {product.reviews &&
@@ -16,9 +14,7 @@ const Product = ({ product }) => {
                             ),
                     )}
                 </div>
-            )}
-        </div>
-    );
-};
+    )}
+\};
 
 export default Product;

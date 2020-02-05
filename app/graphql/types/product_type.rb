@@ -6,6 +6,7 @@ module Types
     field :name, String, null: false
     field :description, String, null: false
     field :manufacturer, ManufacturerType, null: false
+    field :photo_url, String, null: false
     field :reviews, [ReviewType], null: true
   end
 end
