@@ -1,9 +1,14 @@
 # graphql-ruby
 
+Basado en codigo ejemplo 
+
 ## Installation
 
-Install dependencies:
+`docker-compose up`
+`docker-compose exec api bash`
 
+inside the container:
+    
 ```
 bundle install
 
@@ -12,16 +17,10 @@ rails db:migrate
 rails db:seed
 ```
 
-Starting the server:
-
-```
-rails server
-```
-
 Opening the application:
 
 ```
-open http://localhost:3000/
+open http://localhost:8080/
 ```
 
 ## Interesting Files:

@@ -26,7 +26,7 @@ const App = () => (
         const { loading, error, data } = result;
 
         if (loading) {
-          return <div>Wait. Loading</div>;
+          return <div>Loading</div>;
         }
         if (error) {
           return <h1>ERROR</h1>;

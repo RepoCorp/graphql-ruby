@@ -1,8 +1,5 @@
 module Types
   class QueryType < BaseObject
-    add_field GraphQL::Types::Relay::NodeField
-    add_field GraphQL::Types::Relay::NodesField
-
     field :products, [ProductType], null: false
     field :manufacturer, [ManufacturerType], null: false
     field :reviews, [ReviewType], null: false
@@ -11,11 +8,6 @@ module Types
     field :product, ProductType, null: true do
       description "Find a product by ID"
       argument :id, ID, required: true
-    end
-
-
-    def _all_links_meta
-      Link.count
     end
 
     def users
