@@ -8,6 +8,8 @@ services:
       - bundle_path:/usr/local/bundle
     ports:
       - "3000:3000"
+    environment:
+      SECRET_KEY_BASE: 0104ee1586ff2ff7df32ce2b35ada3ee60505fd5167a833c49e08ef1e16e1f1e75b9baee405fcffa68a3a22d51f2c84cf638e7e91c5f21b5300ac48b8410481e
   app:
     build: .
     volumes:
@@ -15,6 +17,12 @@ services:
     command: npm start
     ports:
       - "8080:8080"
+  db:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432"
 volumes:
   bundle_path:
   db_data:

@@ -12,7 +12,7 @@ gem 'bootsnap', require: false
 gem 'puma', '~> 3.12'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 6.0.2.1'
-gem 'sqlite3'
+gem 'pg'
 gem 'validate_url'
 
 gem 'graphql'
