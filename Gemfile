@@ -9,7 +9,7 @@ ruby '2.6.5'
 
 gem 'bcrypt'
 gem 'bootsnap', require: false
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 6.0.2.1'
 gem 'pg'
